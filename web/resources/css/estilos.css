@@ -1,0 +1,125 @@
+body {
+    background: #59CDF0;
+    padding-left: 5em;
+    padding-right: 5em;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000000;  
+    margin: 10px;
+}
+
+/*h1 {
+    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    border-bottom: 1px solid #AFAFAF; 
+    font-size:  16px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    color: #D20005;
+}*/
+
+a:link, a:visited {
+    color: #045491;
+    font-weight : bold;
+    text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+    color: #045491;
+    font-weight : bold;
+    text-decoration : underline;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    padding-top: 2em; 
+    border-bottom: 1px solid #AFAFAF;
+    margin: 0px;
+    padding: 0px;
+}
+ul{
+    margin-bottom: 3.6em;
+}
+
+ul, ol {
+    list-style:none;
+    /* text-decoration: none; */
+    padding-left: 0;
+}
+
+.AlternMenu-link ul {
+    right:-140px;
+    top:0px;
+}
+
+.AlternMenu-link {
+    position:relative;
+}
+
+.MainMenu {
+    background-color: #238276;
+    overflow: hidden;
+    z-index: 1;
+    
+}
+
+.MainMenu-item a,
+.SubMenu-item a{
+    background: -webkit-linear-gradient(rgba(255, 255, 255, 0.89), rgba(189, 200, 199, 0.71));
+    color: #0078ae;
+    display: block;
+    padding: 9px 14px;
+    text-decoration: none;
+}
+
+.MainMenu-item a:hover,
+.SubMenu-item a:hover{
+    background-color:rgba(231, 247, 244, 0);
+    border: 2px solid rgba(66, 52, 52, 0.34);
+    color: #0078ae;
+}
+
+.SubMenu-item{
+    border-right: 1px solid rgba(58, 116, 84, 0.53);
+    float: left;
+    font-size: 12px;
+}
+
+.MainMenu-item ul,
+.SubMenu-item ul{
+    display:none;
+    min-width:140px;
+    position:absolute;
+}
+
+.MainMenu-item{
+    border-right: 1px solid rgba(58, 116, 84, 0.53);
+    float: left;
+}
+
+.MainMenu-link{
+    color: white ;
+    display: block;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+
+.MainMenu-list li:hover > ul {
+    background-color: rgba(65, 60, 60, 0.40);
+    border: 2px solid rgba(255, 255, 255, 0);
+    border-radius: 8px;
+    padding: 6px;
+    color: rgb(249, 249, 249);
+    display:block;
+}
+
+.MainMenu-list{
+    margin-top: 0.8em;
+    padding-left: 39px;
+}
+
+

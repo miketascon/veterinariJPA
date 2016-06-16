@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/template_index.xhtml">
+        <ui:define name="title">Index</ui:define>
+        <ui:define name="body">
+ 
+            <h:body>
+                 
+                <h:form class="LoginUSuario"> 
+
+                    <br />
+                    <section  >
+                        <img src="#{request.contextPath}/resources/images/login.png" width="170px"></img>
+                       
+                        <h:panelGrid columns="1">
+
+                            <p:outputLabel value="NumeroDocumento:" for="numeroDocumento" />
+                            <p:inputText id="numeroDocumento" value="#{loginController.numeroDocumento}" 
+                                         title="NumeroDocumento" required="true" 
+                                         requiredMessage="El número de documento es requerido"
+                                         />
+
+                            <p:outputLabel value="Password: " />
+                            <p:password id="password" value="#{loginController.password}" required="true" 
+                                        requiredMessage="la contraseña es requerida"/>
+                            <h:column/>
+                            <p:commandButton value="Iniciar sesión" action="#{loginController.iniciarSesion()}"  update=":growl, :growl"/>
+                            <p:column/>
+                            <h:link value="Registrarse" outcome="registrar.xhtml" />
+                        </h:panelGrid>
+                    </section>
+                    <div>
+
+
+                    </div>
+                </h:form>
+                
+            </h:body>
+        </ui:define>
+    </ui:composition>  
+</html>
+

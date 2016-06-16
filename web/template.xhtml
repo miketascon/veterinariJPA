@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <head jsf:id="head">
+        <title><ui:insert name="title">Titulo por defecto</ui:insert></title>
+
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/normalize.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/cssLayout.css"/>
+             
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/estilos.css"/>
+        <f:event type="preRenderView" listener="#{loginController.VerificarSesion(event)}" />
+    </head>
+    <body jsf:id="body" class="Body">
+        <p:growl id="growl" life="3000" showDetail="true"   />
+
+        <section class="Section-template">
+            <h1 style="text-align: center; font-family: homer simpson, cursive">Sistemas de información Veterinaria S.A</h1>
+            <h:form style="padding-left: 100em;">
+                <h5><span class="glyphicon glyphicon-user"/> Bienvenido(a) <h:outputText 
+                        value="#{loginController.cliente.nombresCliente}"/></h5>
+                <p:commandButton icon="ui-icon-power"  value="Cerrar sesión" actionListener="#{loginController.cerrarSesion}"
+                                 action="/index.xhtml?faces-redirect=true" />
+            </h:form>
+            <ui:insert name="body">Deafault body</ui:insert> 
+        </section>
+        <footer id="Contacto" class="Footer-template">
+            <div class="Footer-left">
+                <h3 class="Footer-title">MT soluctions</h3>
+                <p class="Footer-description">Version software 0.1</p>
+            </div>
+
+        </footer>
+
+        <form jsf:id="confirmForm">
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+                <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
+        </form>
+
+    </body>
+
+
+</html>

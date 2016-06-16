@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">cliente</ui:define>
+
+        <ui:define name="body"> 
+
+
+            <h:form id="ClienteCreateForm">
+
+
+
+
+                <h:panelGrid columns="3" >
+
+                    <p:outputLabel value="IdTipoDocumento:" for="idTipoDocumento" />
+                    <p:selectOneMenu id="idTipoDocumento" value="#{clienteController.clienteActual.idTipoDocumento}" required="true" requiredMessage="The IdTipoDocumento field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{clienteController.listTipoDocumentoSelectOne}"/>
+                    </p:selectOneMenu>
+                    <p:column/>
+
+                    <p:outputLabel value="NumeroDocumento:" for="numeroDocumento" />
+                    <p:inputText id="numeroDocumento" value="#{clienteController.clienteActual.numeroDocumento}" 
+                                 title="NumeroDocumento" required="true" 
+                                 requiredMessage="El numero de documento es requerido"
+                                 validator="#{clienteController.validarDocumento}"> 
+                        <f:ajax execute="@this" render="numeroDocumentoMessage" />
+                    </p:inputText>
+                    <p:message id="numeroDocumentoMessage" for="numeroDocumento" />
+                    
+                    <p:outputLabel value="NombresCliente:" for="nombresCliente" />
+                    <p:inputText id="nombresCliente" value="#{clienteController.clienteActual.nombresCliente}" 
+                                 title="NombresCliente" required="true" 
+                                 requiredMessage="The NombresCliente field is required." maxlength="30">
+                        <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ]*"/>
+                        <f:ajax execute="@this" render="nombreClienteMessage"/>
+                    </p:inputText>
+
+                    <p:message id="nombreClienteMessage" for="nombresCliente" />
+                    
+
+                    <p:outputLabel value="ApellidosCliente:" for="apellidosCliente" />
+                    <p:inputText id="apellidosCliente" value="#{clienteController.clienteActual.apellidosCliente}"
+                                 title="ApellidosCliente" required="true" 
+                                 requiredMessage="The ApellidosCliente field is required." maxlength="30">
+                        <f:validateRegex pattern="[a-zA-Z áéíóúÁÉÍÓÚÑñ]*"/>
+                        <f:ajax execute="@this" render="apellidoClienteMessage"/>
+                    </p:inputText>
+                    <p:message id="apellidoClienteMessage" for="apellidosCliente" />
+
+
+
+                    <p:outputLabel value="FechaNacimiento:" for="fechaNacimiento" />
+                    <p:calendar id="fechaNacimiento" value="#{clienteController.clienteActual.fechaNacimiento}" 
+                                title="FechaNacimiento" required="true" effect="fold"  
+                                requiredMessage="The FechaNacimiento field is required."  >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </p:calendar>
+                    <p:column/>
+
+
+                    <p:outputLabel value="IdGenero:" for="idGenero" />
+                    <p:selectOneMenu id="idGenero" value="#{clienteController.clienteActual.idGenero}" 
+                                     required="true" requiredMessage="The IdGenero field is required.">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{clienteController.listGeneroSelectOne}"/>
+                    </p:selectOneMenu>
+                    <p:column/>
+
+                    <label class="Label">Contraseña *</label>
+                    <p:password id="pwd1" value="#{clienteController.password}" match="pwd2" label="Password 1" required="true" />
+                    <p:column   />
+                    <label class="Label">Escriba de nuevo la contraseña *</label>
+                    <p:password id="pwd2" value="#{clienteController.password}" label="Password 2" required="true" />
+                    <p:column   />
+
+                    <p:outputLabel value="Telefono:" for="telefono" />
+                    <p:inputText id="telefono" value="#{clienteController.clienteActual.telefono}" 
+                                 title="Telefono" required="true" 
+                                 requiredMessage="The Telefono field is required.">
+                        <f:validateRegex pattern="[0-9]*"/>
+                        <f:ajax execute="@this" render="movilMessage"/>
+                    </p:inputText>
+                    <p:message id="movilMessage" for="telefono" />
+
+
+                    <p:outputLabel value="Direccion:" for="direccion" />
+                    <p:inputText id="direccion" value="#{clienteController.clienteActual.direccion}" 
+                                 title="Direccion" required="true" 
+                                 requiredMessage="The Direccion field is required.">
+                        <f:ajax execute="@this" render="direccionMessage"/>
+                    </p:inputText>
+                    <p:message id="direccionMessage" for="direccion" />
+
+
+                    <p:outputLabel value="Email:" for="email" />
+                    <p:inputText type="email" id="email" value="#{clienteController.clienteActual.email}" 
+                                 title="Email" >
+                        <f:ajax execute="@this" render="emailMessage"/>
+                    </p:inputText>
+                    <p:message id="emailMessage" for="email" />
+
+                    <p:outputLabel value="Ciudad:" for="ciudad" />
+                    <p:autoComplete id="ciudad" value="#{clienteController.clienteActual.ciudad}" 
+                                    required="true" requiredMessage="El campo es requerido"
+                                    completeMethod="#{clienteController.getListCiudadesAutoComplete}" 
+                                    var="ciudad" itemLabel="#{ciudad}" itemValue="#{ciudad}" 
+                                    converter="ciudadConverter"
+                                    forceSelection="true" /> 
+                    <p:column />
+
+
+                </h:panelGrid>
+
+                <p:commandButton actionListener="#{clienteController.addCliente}" value="GUARDAR" 
+                                 update=" :growl"
+                                 />
+                <p:button value="CANCELAR" outcome="/clientes/clientesList"/>
+
+            </h:form>
+
+
+
+
+        </ui:define>
+    </ui:composition>
+
+
+</html>
+

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <head jsf:id="head">
+        <title><ui:insert name="title">Titulo por defecto</ui:insert></title>
+
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/normalize.css"/>
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/cssLayout.css"/>
+       
+        
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/estilos.css"/>
+       
+        
+    </head>
+
+    <h:body id="body">
+        <p:growl id="growl" life="3000" showDetail="true"  />
+
+        <section class="Section-template">
+            <h1 style="text-align: center; font-family: homer simpson, cursive">Sistemas de información Veterinaria S.A</h1>
+                 
+                 <ui:insert name="body">Deafault body</ui:insert> 
+           
+        </section>
+        <footer id="Contacto" class="Footer-template">
+            <div class="Footer-left">
+                <h3 class="Footer-title">MT soluctions</h3>
+                <p class="Footer-description">Version software 0.1</p>
+            </div>
+
+        </footer>
+    </h:body>
+
+</html>
